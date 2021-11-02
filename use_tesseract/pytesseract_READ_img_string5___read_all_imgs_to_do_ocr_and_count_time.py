@@ -34,13 +34,17 @@ def read_ocr_and_write_txt(img_name):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #plt.imshow(cv2.cvtColor(gray, cv2.COLOR_BGR2RGB))
     #plt.show()
-    #alpha, beta = 1.7, 0   #沒有幫助
+    #alpha, beta = 1.7, 30  #沒有幫助
     #gray = cv2.convertScaleAbs(alpha, beta)  #沒有幫助
+    #plt.imshow(cv2.cvtColor(gray, cv2.COLOR_BGR2RGB))
+    #plt.show()
     gray = cv2.bilateralFilter(gray, 11, 17, 17) #blur to reduce Noise
+    #plt.imshow(cv2.cvtColor(gray, cv2.COLOR_BGR2RGB))
+    #plt.show()
     #custom_config = r'--oem 3 --psm 6'
     custom_config = '-l eng --oem 3 --psm 12'
     #text = pytesseract.image_to_string(gray, config=custom_config, lang="chi_tra")    #中文辨識
-    text = pytesseract.image_to_string(gray, lang="chi_tra+eng", config=custom_config, nice=0)  #中英混雜辨識
+    text = pytesseract.image_to_string(gray, lang="chi_tra", config=custom_config, nice=0)  #中英混雜辨識
         #lang="chi_tra+eng", config=custom_config這兩個參數會讓運行時間增加
         #Using oem and psm in Tesseract Raspberry Pi for better results
         #lang="chi_tra+eng"實現中文辨識且實現中英文夾雜。
