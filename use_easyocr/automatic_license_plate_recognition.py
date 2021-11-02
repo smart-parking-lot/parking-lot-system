@@ -144,6 +144,3 @@ res = cv2.rectangle(img, tuple(approx[0][0]), tuple(approx[2][0]), (0,255,0),3)
 plt.imshow(cv2.cvtColor(res, cv2.COLOR_BGR2RGB))
 end_time = time.time()
 print('Time cost: {} s'.format(end_time - start_time)) #計算經過時間總長
-
-
-
