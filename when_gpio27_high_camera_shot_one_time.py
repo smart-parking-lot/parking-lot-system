@@ -98,7 +98,7 @@ GPIO.setup(SWITCH_PIN, GPIO.IN) #告訴RPi，上述腳位們是input or output
 time.sleep(0.1) #warm up
 
 camera = PiCamera()
-camera.resolution = (320, 240)
+camera.resolution = (960, 720)
 time.sleep(0.1) #warm up
 
 try:
